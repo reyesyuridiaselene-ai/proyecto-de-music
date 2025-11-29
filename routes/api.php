@@ -25,3 +25,7 @@ Route::delete('/users/{id}', [UsersControler::class, 'destroy']);
 //routes de api de canciones //
 use App\Http\Controllers\CancionesCONTROLLER;
 Route::post('/canciones', [CancionesCONTROLLER::class, 'nuevaCancion']);
+// Ruta para LEER TODAS las canciones (GET) por que va a sergresar un valor en pantalla
+Route::get('/canciones', [CancionesController::class, 'index']);
+// Ruta para BORRAR una canción específica (DELETE)
+Route::delete('/canciones/{id}', [CancionesController::class, 'destroy']);

@@ -28,4 +28,24 @@ class CancionesController extends Controller
         return response()->json(['message' => 'Canción creada', 'id' => $cancion->id], 201);
            
     }
+
+    public function index()
+    {
+        $canciones = \App\Models\Canciones::all();
+
+        // Devuelve el array de canciones en formato JSON con código 200 (OK)
+        return response()->json($canciones, 200);
+    }
+
+    // App\Http\Controllers\CancionesController.php
+
+    public function destroy($id)
+    {
+        $cancion = Canciones::find($id);
+        if (!$cancion) {
+            return response()->json(['message' => 'Canción no encontrada'], 404);
+        }
+        $cancion->delete();
+        return response()->json(['message' => 'Canción eliminada con éxito'], 200);
+    }
 }
