@@ -12,14 +12,20 @@ class CancionesController extends Controller
     public function nuevaCancion(Request $request){
         //poner la parte de use cancion para 
        // $cancion = Cancion::create($request->all());
-        $cancion = new Canciones;
+        $cancion = Canciones::create([
+        'nombre' => $request->nombre, 
+        'artista' => $request->artista,
+        'tiempo' => $request->tiempo,
+        'genero' => $request->genero
+        //
+        /*
         $cancion ->nombre = $request->nombre;
         $cancion ->artista = $request->artista;
         $cancion ->tiempo = $request->tiempo;
-        $cancion ->genero = $request->genero;
-        $cancion ->save();
+        $cancion ->genero = $request->genero;*/
+        ]);
 
-        return response()->json(['message' => 'Canción creada'], 201);
+        return response()->json(['message' => 'Canción creada', 'id' => $cancion->id], 201);
            
     }
 }

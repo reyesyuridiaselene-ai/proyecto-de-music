@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Canciones extends Model
 {
     //protected $table = 'cancion';
-     protected $fillable = ['titulo', 'artista', 'album', 'duracion'];
+    protected $table = 'cancion';
+    protected $fillable = ['nombre', 'artista', 'tiempo', 'genero'];
     protected $guarded = [];
 
 }
