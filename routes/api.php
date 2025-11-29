@@ -21,3 +21,7 @@ Route::get('/users/{id}', [UsersControler::class, 'show']);
 Route::put('/users/{id}', [UsersControler::class, 'update']);
 Route::patch('/users/{id}', [UsersControler::class, 'update']);
 Route::delete('/users/{id}', [UsersControler::class, 'destroy']);
+
+//routes de api de canciones //
+use App\Http\Controllers\CancionesCONTROLLER;
+Route::post('/canciones', [CancionesCONTROLLER::class, 'nuevaCancion']);

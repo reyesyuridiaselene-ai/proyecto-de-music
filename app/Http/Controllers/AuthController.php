@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $email = $request->input('email');
-    $password = $request->input('password');
+        $password = $request->input('password');
 
     try {
         // 1. Buscar al usuario
