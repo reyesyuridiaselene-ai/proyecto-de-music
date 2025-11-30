@@ -48,4 +48,23 @@ class CancionesController extends Controller
         $cancion->delete();
         return response()->json(['message' => 'Canción eliminada con éxito'], 200);
     }
+
+    // App\Http\Controllers\CancionesController.php
+
+    public function update(Request $request, $id)
+    {
+        $cancion = \App\Models\Canciones::find($id);
+
+        if (!$cancion) {
+            return response()->json(['message' => 'Canción no encontrada'], 404);
+        }
+
+        // 3. Aplicar los nuevos datos de la solicitud al objeto de la canción.
+        // fill() toma todos los datos del $request (si están en $fillable)
+        $cancion->fill($request->all());
+        
+        $cancion->save();
+
+        return response()->json($cancion, 200);
+    }
 }
