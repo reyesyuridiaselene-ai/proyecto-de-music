@@ -9,7 +9,13 @@ class Canciones extends Model
 {
     //protected $table = 'cancion';
     protected $table = 'cancion';
-    protected $fillable = ['nombre', 'artista', 'tiempo', 'genero'];
+    protected $fillable = ['nombre', 'artista', 'tiempo', 'genero_id'];
     protected $guarded = [];
+
+    // Relación One-to-Many: Una canción pertenece a un género
+    public function genero()
+    {
+        return $this->belongsTo(Genero::class);
+    }
 
 }

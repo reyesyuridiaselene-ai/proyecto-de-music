@@ -16,13 +16,7 @@ class CancionesController extends Controller
         'nombre' => $request->nombre, 
         'artista' => $request->artista,
         'tiempo' => $request->tiempo,
-        'genero' => $request->genero
-        //
-        /*
-        $cancion ->nombre = $request->nombre;
-        $cancion ->artista = $request->artista;
-        $cancion ->tiempo = $request->tiempo;
-        $cancion ->genero = $request->genero;*/
+        'genero_id' => $request->genero_id
         ]);
 
         return response()->json(['message' => 'Canción creada', 'id' => $cancion->id], 201);
@@ -31,7 +25,7 @@ class CancionesController extends Controller
 
     public function index()
     {
-        $canciones = \App\Models\Canciones::all();
+        $canciones = \App\Models\Canciones::with('genero')->get();
 
         // Devuelve el array de canciones en formato JSON con código 200 (OK)
         return response()->json($canciones, 200);

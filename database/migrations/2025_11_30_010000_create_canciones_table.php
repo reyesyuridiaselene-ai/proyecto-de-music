@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->string('artista', 100);
             $table->integer('tiempo'); 
-            $table->string('genero', 50); 
+            $table->foreignId('genero_id')->nullable()->constrained('generos');
         });
     }
 
